@@ -22,6 +22,9 @@ public class NewsEntity {
     @JoinColumn(name = "userId", nullable = false)
     private UserEntity user;
 
+    @Column(name = "deleted", nullable = false)
+    private boolean deleted;
+
     public Long getId() {
         return id;
     }
@@ -44,5 +47,13 @@ public class NewsEntity {
 
     public void setUser(UserEntity user) {
         this.user = user;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }

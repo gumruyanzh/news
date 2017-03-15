@@ -22,6 +22,10 @@ public class NewsUser extends User implements NewsUserDetails {
         this.displayUsername=displayUsername;
     }
 
+    public NewsUser(String username,  Collection<? extends GrantedAuthority> authorities) {
+        super(username, "password", authorities);
+    }
+
     @Override
     public boolean isActive() {
         return active;

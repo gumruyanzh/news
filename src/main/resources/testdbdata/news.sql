@@ -1,1 +1,1 @@
-INSERT INTO `news` (`id`,`user_id`) VALUES (1,1);
+INSERT INTO `news` (`id`,`user_id`,`deleted`) VALUES (1,1,FALSE );

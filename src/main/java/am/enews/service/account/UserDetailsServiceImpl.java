@@ -18,7 +18,7 @@ import java.util.Set;
 /**
  * Created by vazgent on 3/15/2017.
  */
-@Service
+@Service("detailService2")
 public class UserDetailsServiceImpl implements NewsUserDetailsService {
     private static final Logger logger = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
 
@@ -30,7 +30,7 @@ public class UserDetailsServiceImpl implements NewsUserDetailsService {
     private UserService userService;
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public NewsUserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         UserEntity userEntity = userRepository.findByUserName(userName);
         logger.info(String.format("Trying load user by userName : %s", userName));
