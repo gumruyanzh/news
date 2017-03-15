@@ -1,4 +1,4 @@
-package am.enews.service;
+package am.enews.service.account;
 
 import am.enews.data.UserEntity;
 import am.enews.data.repository.RoleRepository;

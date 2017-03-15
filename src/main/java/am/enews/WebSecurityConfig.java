@@ -36,7 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         LogoutConfigurer<HttpSecurity> httpSecurityLogoutConfigurer = http.
                 headers().cacheControl().disable().and().
                 authorizeRequests()
-                .antMatchers("/add", "/myoffers", "/edit", "/edit/**").hasRole("ADMIN")
+                .antMatchers("/api/news", "/myoffers", "/edit", "/edit/**").hasRole("USER")
                 .and()
                 .formLogin()
                 .loginPage("/login")

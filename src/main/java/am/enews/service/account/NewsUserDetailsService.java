@@ -1,4 +1,4 @@
-package am.enews.service;
+package am.enews.service.account;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 

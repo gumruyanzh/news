@@ -1,4 +1,4 @@
-package am.enews.service;
+package am.enews.service.account;
 
 import am.enews.data.repository.UserRepository;
 import org.slf4j.Logger;
@@ -11,12 +11,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
 /**
  * Created by vazgent on 3/15/2017.
  */
+@Service
 public class SecurityServiceImpl implements SecurityService {
     private static final Logger logger = LoggerFactory.getLogger(SecurityServiceImpl.class);
 

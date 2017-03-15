@@ -1,4 +1,4 @@
-package am.enews.service;
+package am.enews.service.account;
 
 /**
  * Created by vazgent on 3/15/2017.

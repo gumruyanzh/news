@@ -18,6 +18,11 @@ public class NewsDetailEntity {
     @Column(name = "news_id", unique = true, nullable = false)
     private Long newsId;
 
+
+    private String title;
+    private String content;
+
+
     @OneToOne(fetch = FetchType.LAZY)
     @PrimaryKeyJoinColumn
     private NewsDetailEntity news;
@@ -28,6 +33,22 @@ public class NewsDetailEntity {
 
     public void setNewsId(Long newsId) {
         this.newsId = newsId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public NewsDetailEntity getNews() {
