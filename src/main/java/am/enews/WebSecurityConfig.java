@@ -33,7 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        LogoutConfigurer<HttpSecurity> httpSecurityLogoutConfigurer = http.
+        http.
                 headers().cacheControl().disable().and().
                 authorizeRequests()
                 .antMatchers("/api/news", "/myoffers", "/edit", "/edit/**").hasRole("USER")
@@ -46,11 +46,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutSuccessUrl("/");
 
-        if (env.getActiveProfiles()[0].toString().equals("test")) {
-
-            System.out.println("Running with test Profile, disabling CSRF");
-            httpSecurityLogoutConfigurer.and().csrf().disable();
-        }
 
     }
 

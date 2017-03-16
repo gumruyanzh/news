@@ -18,7 +18,7 @@ import java.util.Set;
 /**
  * Created by vazgent on 3/15/2017.
  */
-@Service("detailService2")
+@Service
 public class UserDetailsServiceImpl implements NewsUserDetailsService {
     private static final Logger logger = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
 

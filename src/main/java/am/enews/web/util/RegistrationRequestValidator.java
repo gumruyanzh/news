@@ -26,15 +26,15 @@ public class RegistrationRequestValidator implements Validator {
         System.out.println(userService);
         RegistrationRequest request = (RegistrationRequest) o;
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userName", "NotEmpty");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPassword", "NotEmpty");
 
 
-        if (request.getUserName().length() < 4 || request.getUserName().length() > 32) {
+        if (request.getUsername().length() < 4 || request.getUsername().length() > 32) {
             errors.rejectValue("userName", "Size.userName");
         }
-        if (userService.findByUsername(request.getUserName()) != null) {
+        if (userService.findByUsername(request.getUsername()) != null) {
             errors.rejectValue("userName", "Duplicate.userForm.userName");
         }
 

@@ -48,12 +48,12 @@ public class UserController {
         }
 
         UserCreateDto userCreateDto = new UserCreateDto();
-        userCreateDto.setUserName(registrationRequest.getUserName());
+        userCreateDto.setUserName(registrationRequest.getUsername());
         userCreateDto.setPassword(registrationRequest.getPassword());
 
         long userId = userService.save(userCreateDto);
-        securityService.autoLogin(registrationRequest.getUserName(), registrationRequest.getPassword());
-        logger.info(String.format("Registration success for userName: %s, redirecting", registrationRequest.getUserName()));
+        securityService.autoLogin(registrationRequest.getUsername(), registrationRequest.getPassword());
+        logger.info(String.format("Registration success for userName: %s, redirecting", registrationRequest.getUsername()));
         return "redirect:/";
     }
 
@@ -68,7 +68,7 @@ public class UserController {
     }
 
 
-    @GetMapping({"/login"})
+    @GetMapping("/login")
     public String login(LoginModel loginModel) {
         return "login";
     }
