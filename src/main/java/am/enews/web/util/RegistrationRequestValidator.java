@@ -32,10 +32,10 @@ public class RegistrationRequestValidator implements Validator {
 
 
         if (request.getUsername().length() < 4 || request.getUsername().length() > 32) {
-            errors.rejectValue("userName", "Size.userName");
+            errors.rejectValue("username", "Size.username");
         }
         if (userService.findByUsername(request.getUsername()) != null) {
-            errors.rejectValue("userName", "Duplicate.userForm.userName");
+            errors.rejectValue("username", "Duplicate.userForm.username");
         }
 
 

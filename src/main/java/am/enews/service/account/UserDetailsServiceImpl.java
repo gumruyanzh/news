@@ -31,18 +31,18 @@ public class UserDetailsServiceImpl implements NewsUserDetailsService {
 
     @Override
     @Transactional
-    public NewsUserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        UserEntity userEntity = userRepository.findByUserName(userName);
-        logger.info(String.format("Trying load user by userName : %s", userName));
+    public NewsUserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        UserEntity userEntity = userRepository.findByUsername(username);
+        logger.info(String.format("Trying load user by username : %s", username));
         if (userEntity == null) {
-            throw new UsernameNotFoundException(String.format("User not found with this username %s", userName));
+            throw new UsernameNotFoundException(String.format("User not found with this username %s", username));
         }
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         for (RoleEntity role : userEntity.getRoles()) {
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
         }
-        return new NewsUser(userEntity.getUserName(), userEntity.getPasswordHash(), grantedAuthorities, userEntity.isActive(), userEntity.getUserName());
+        return new NewsUser(userEntity.getUsername(), userEntity.getPasswordHash(), grantedAuthorities, userEntity.isActive(), userEntity.getUsername());
     }
 
    }

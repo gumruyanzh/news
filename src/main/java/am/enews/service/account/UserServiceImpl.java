@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public long save(UserCreateDto request) {
         UserEntity user = new UserEntity();
-        user.setUserName(request.getUserName());
+        user.setUsername(request.getUsername());
         user.setPasswordHash(bCryptPasswordEncoder.encode(request.getPassword()));
         user.setRoles(new HashSet<>(Arrays.asList(roleRepository.findByName("ROLE_USER"))));
         userRepository.save(user);
@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserEntity findByUsername(String username) {
-        return userRepository.findByUserName(username);
+        return userRepository.findByUsername(username);
     }
 
     @Override

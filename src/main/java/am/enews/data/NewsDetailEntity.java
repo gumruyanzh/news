@@ -25,7 +25,7 @@ public class NewsDetailEntity {
 
     @OneToOne(fetch = FetchType.LAZY)
     @PrimaryKeyJoinColumn
-    private NewsDetailEntity news;
+    private NewsEntity news;
 
     public Long getNewsId() {
         return newsId;
@@ -51,11 +51,11 @@ public class NewsDetailEntity {
         this.content = content;
     }
 
-    public NewsDetailEntity getNews() {
+    public NewsEntity getNews() {
         return news;
     }
 
-    public void setNews(NewsDetailEntity news) {
+    public void setNews(NewsEntity news) {
         this.news = news;
     }
 }

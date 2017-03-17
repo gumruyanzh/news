@@ -12,4 +12,5 @@ public class HelperConstant {
     public static final String EMPTY_STRING ="              ";
     public static final String VALID_USER_PASSWORD ="pasw";
     public static final String INVALID_USER_PASSWORD ="123456";
+    public static final String TEXT_HTML_UTF_8 ="text/html;charset=UTF-8";
 }

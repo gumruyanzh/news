@@ -48,7 +48,7 @@ public class UserController {
         }
 
         UserCreateDto userCreateDto = new UserCreateDto();
-        userCreateDto.setUserName(registrationRequest.getUsername());
+        userCreateDto.setUsername(registrationRequest.getUsername());
         userCreateDto.setPassword(registrationRequest.getPassword());
 
         long userId = userService.save(userCreateDto);

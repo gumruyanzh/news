@@ -25,14 +25,15 @@ public class NewsServiceImpl implements NewsService {
     public long add(AddNewsDto news) {
         NewsEntity newsEntity = new NewsEntity();
 
-        NewsDetailEntity detail = new NewsDetailEntity();
-        detail.setTitle(news.getTitle());
-        detail.setContent(news.getContent());
+        NewsDetailEntity detailEntity = new NewsDetailEntity();
+        detailEntity.setTitle(news.getTitle());
+        detailEntity.setContent(news.getContent());
 
         UserEntity creator = userRepository.getOne(news.getCreatorId());
 
+        detailEntity.setNews(newsEntity);
         newsEntity.setUser(creator);
-        newsEntity.setDetail(detail);
+        newsEntity.setDetail(detailEntity);
 
         newsRepository.save(newsEntity);
 
