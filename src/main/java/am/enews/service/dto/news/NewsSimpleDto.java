@@ -13,6 +13,13 @@ public class NewsSimpleDto {
     private String content;
     private Date created;
 
+    public NewsSimpleDto(long id, String title, String content, Date created) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.created = created;
+    }
+
     public long getId() {
         return id;
     }

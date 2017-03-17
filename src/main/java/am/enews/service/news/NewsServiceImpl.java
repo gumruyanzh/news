@@ -8,7 +8,12 @@ import am.enews.data.repository.UserRepository;
 import am.enews.service.dto.news.AddNewsDto;
 import am.enews.service.dto.news.NewsSimpleDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by vazgent on 3/15/2017.
@@ -44,14 +49,15 @@ public class NewsServiceImpl implements NewsService {
     @Override
     public NewsSimpleDto getById(long id) {
         NewsEntity news = newsRepository.getOne(id);
-
-        NewsSimpleDto newsSimpleDto = new NewsSimpleDto();
-        newsSimpleDto.setId(news.getId());
-        newsSimpleDto.setTitle(news.getDetail().getTitle());
-        newsSimpleDto.setContent(news.getDetail().getContent());
-
+        NewsSimpleDto newsSimpleDto = new NewsSimpleDto(news.getId(), news.getDetail().getTitle(), news.getDetail().getContent(), news.getDetail().getCreated());
         return newsSimpleDto;
 
+    }
+
+    @Override
+    public List<NewsSimpleDto> getLastNews(PageRequest pageRequest) {
+        Page<NewsEntity> newsList = newsRepository.findAll(pageRequest);
+        return newsList.getContent().stream().map(n -> new NewsSimpleDto(n.getId(), n.getDetail().getTitle(), n.getDetail().getContent(), n.getDetail().getCreated())).collect(Collectors.toList());
 
     }
 }

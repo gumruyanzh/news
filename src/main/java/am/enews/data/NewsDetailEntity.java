@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by vazgent on 3/15/2017.
@@ -26,6 +27,12 @@ public class NewsDetailEntity {
     @OneToOne(fetch = FetchType.LAZY)
     @PrimaryKeyJoinColumn
     private NewsEntity news;
+
+    @Column(nullable = false)
+    private Date created;
+
+    private Date updated;
+
 
     public Long getNewsId() {
         return newsId;
@@ -57,5 +64,31 @@ public class NewsDetailEntity {
 
     public void setNews(NewsEntity news) {
         this.news = news;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        updated = created = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updated = new Date();
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public Date getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
     }
 }
